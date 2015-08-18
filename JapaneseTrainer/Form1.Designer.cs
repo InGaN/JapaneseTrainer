@@ -47,6 +47,7 @@ namespace JapaneseTrainer
             this.lblJapanese = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblKana = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -55,12 +56,13 @@ namespace JapaneseTrainer
             // btnNextKanji
             // 
             this.btnNextKanji.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNextKanji.Location = new System.Drawing.Point(333, 3);
+            this.btnNextKanji.Location = new System.Drawing.Point(609, 3);
             this.btnNextKanji.Name = "btnNextKanji";
-            this.btnNextKanji.Size = new System.Drawing.Size(74, 30);
+            this.btnNextKanji.Size = new System.Drawing.Size(74, 40);
             this.btnNextKanji.TabIndex = 0;
             this.btnNextKanji.Text = global::JapaneseTrainer.strings.next;
             this.btnNextKanji.UseVisualStyleBackColor = true;
+            this.btnNextKanji.Click += new System.EventHandler(this.btnNextKanji_Click);
             // 
             // menuStrip1
             // 
@@ -69,7 +71,7 @@ namespace JapaneseTrainer
             this.kanjiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(416, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(692, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,14 +134,14 @@ namespace JapaneseTrainer
             // increaseToolStripMenuItem
             // 
             this.increaseToolStripMenuItem.Name = "increaseToolStripMenuItem";
-            this.increaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.increaseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.increaseToolStripMenuItem.Text = global::JapaneseTrainer.strings.increase;
             this.increaseToolStripMenuItem.Click += new System.EventHandler(this.increaseToolStripMenuItem_Click);
             // 
             // decreaseToolStripMenuItem
             // 
             this.decreaseToolStripMenuItem.Name = "decreaseToolStripMenuItem";
-            this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.decreaseToolStripMenuItem.Text = global::JapaneseTrainer.strings.decrease;
             this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
             // 
@@ -148,7 +150,7 @@ namespace JapaneseTrainer
             this.pbTimer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbTimer.Location = new System.Drawing.Point(3, 3);
             this.pbTimer.Name = "pbTimer";
-            this.pbTimer.Size = new System.Drawing.Size(324, 30);
+            this.pbTimer.Size = new System.Drawing.Size(600, 40);
             this.pbTimer.TabIndex = 2;
             // 
             // lblMeaning
@@ -156,9 +158,9 @@ namespace JapaneseTrainer
             this.lblMeaning.AutoSize = true;
             this.lblMeaning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMeaning.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMeaning.Location = new System.Drawing.Point(3, 136);
+            this.lblMeaning.Location = new System.Drawing.Point(3, 180);
             this.lblMeaning.Name = "lblMeaning";
-            this.lblMeaning.Size = new System.Drawing.Size(410, 62);
+            this.lblMeaning.Size = new System.Drawing.Size(686, 49);
             this.lblMeaning.TabIndex = 3;
             this.lblMeaning.Text = "EN";
             this.lblMeaning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,29 +170,30 @@ namespace JapaneseTrainer
             this.lblJapanese.AutoSize = true;
             this.lblJapanese.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblJapanese.Font = new System.Drawing.Font("Microsoft YaHei", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJapanese.Location = new System.Drawing.Point(3, 0);
+            this.lblJapanese.Location = new System.Drawing.Point(3, 43);
             this.lblJapanese.Name = "lblJapanese";
-            this.lblJapanese.Size = new System.Drawing.Size(410, 136);
+            this.lblJapanese.Size = new System.Drawing.Size(686, 137);
             this.lblJapanese.TabIndex = 4;
             this.lblJapanese.Text = "JP";
-            this.lblJapanese.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblJapanese.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.lblJapanese, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblMeaning, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.lblJapanese, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblMeaning, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblKana, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.68687F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.31313F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(416, 240);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.62224F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.07326F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.65225F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.65225F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(692, 281);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -201,18 +204,30 @@ namespace JapaneseTrainer
             this.tableLayoutPanel2.Controls.Add(this.pbTimer, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnNextKanji, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 201);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 232);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(410, 36);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(686, 46);
             this.tableLayoutPanel2.TabIndex = 5;
+            // 
+            // lblKana
+            // 
+            this.lblKana.AutoSize = true;
+            this.lblKana.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblKana.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKana.Location = new System.Drawing.Point(3, 0);
+            this.lblKana.Name = "lblKana";
+            this.lblKana.Size = new System.Drawing.Size(686, 43);
+            this.lblKana.TabIndex = 6;
+            this.lblKana.Text = "kana";
+            this.lblKana.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 264);
+            this.ClientSize = new System.Drawing.Size(692, 305);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -246,6 +261,7 @@ namespace JapaneseTrainer
         private System.Windows.Forms.ToolStripMenuItem fontSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
+        private System.Windows.Forms.Label lblKana;
     }
 }
 
