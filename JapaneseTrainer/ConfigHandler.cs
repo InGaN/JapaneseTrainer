@@ -10,19 +10,26 @@ namespace JapaneseTrainer
     class ConfigHandler
     {
         int fontSize;
+        int formWidth;
+        int formHeight;
 
-        public ConfigHandler()
+        public ConfigHandler(Size formSize)
         {
             var perUserAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string pathString = System.IO.Path.Combine(perUserAppData, "JapaneseTrainer");
             string fileName = "config.txt";
             pathString = System.IO.Path.Combine(pathString, fileName);
 
+            formWidth = formSize.Width;
+            formHeight = formSize.Height;
+
             if (System.IO.File.Exists(pathString))
             {
                 string[] read = System.IO.File.ReadAllLines(pathString);
                 read = read[0].Split(',');
-                fontSize = Int32.Parse(read[0]);                
+                fontSize = Int32.Parse(read[0]);
+                formWidth = Int32.Parse(read[1]);
+                formHeight = Int32.Parse(read[2]);
             }
             else
             {
@@ -40,11 +47,13 @@ namespace JapaneseTrainer
             pathString = System.IO.Path.Combine(pathString, fileName);
             Console.WriteLine("Path to my file: {0}\n", pathString);
 
+            string configString = fontSize.ToString() + "," + formWidth + "," + formHeight;
+
             if (!System.IO.File.Exists(pathString))
             {
                 using (System.IO.StreamWriter writer = System.IO.File.CreateText(pathString))
                 {
-                    writer.Write(fontSize.ToString());
+                    writer.Write(configString);
                 }
             }
             else
@@ -55,7 +64,7 @@ namespace JapaneseTrainer
                     {
                         using (var writer = new System.IO.StreamWriter(stream))
                         {
-                            writer.Write(fontSize.ToString());
+                            writer.Write(configString);
                         }
                     }
                 }
@@ -65,6 +74,11 @@ namespace JapaneseTrainer
                     createConfig();
                 }
             }
+        }
+
+        public Size getFormSize()
+        {
+            return new Size(formWidth, formHeight);
         }
 
         public void increaseFontSize()
@@ -78,6 +92,19 @@ namespace JapaneseTrainer
         public int getFontSize()
         {
             return fontSize;
+        }
+        public void setFormSize(Size formSize)
+        {
+            formWidth = formSize.Width;
+            formHeight = formSize.Height;
+        }
+        public int getFormHeight()
+        {
+            return formHeight;
+        }
+        public int getFormWidth()
+        {
+            return formWidth;
         }
     }
 }

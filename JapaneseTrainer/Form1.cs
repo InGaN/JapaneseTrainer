@@ -16,16 +16,30 @@ namespace JapaneseTrainer
     {             
         ConfigHandler configHandler;
         SentenceCreator sentenceCreator;
+        string uri;
 
         public Form1()
         {      
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
             InitializeComponent();
 
-            configHandler = new ConfigHandler();
-            sentenceCreator = new SentenceCreator(lblJapanese, lblMeaning, lblKana);
+            uri = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string[] array = uri.Split('\\');
+            uri = "";
+            for (int x = 0; x < (array.Length - 1); x++)
+            {
+                uri += array[x] + "\\";
+            }
+            uri += "Audio\\";
+            Console.WriteLine(uri);
 
+            configHandler = new ConfigHandler(this.Size);
+            this.Size = configHandler.getFormSize();
+
+            sentenceCreator = new SentenceCreator(lblJapanese, lblMeaning, configHandler, uri);
+                       
             lblJapanese.Font = new Font(lblJapanese.Font.FontFamily, configHandler.getFontSize());            
+
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,8 +62,15 @@ namespace JapaneseTrainer
         }
 
         private void btnNextKanji_Click(object sender, EventArgs e)
+        {            
+            sentenceCreator.writeToForm(innerTable);
+        }
+
+        private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
-            sentenceCreator.writeToForm();
-        }                
+            configHandler.setFormSize(this.Size);
+            configHandler.createConfig();
+            MessageBox.Show("Closing Program");
+        }    
     }
 }
