@@ -147,4 +147,10 @@
   <data name="increase" xml:space="preserve">
     <value>上</value>
   </data>
+  <data name="config" xml:space="preserve">
+    <value>config</value>
+  </data>
+  <data name="showID" xml:space="preserve">
+    <value>Show ID</value>
+  </data>
 </root>

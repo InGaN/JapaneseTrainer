@@ -117,40 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="close" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="config" xml:space="preserve">
-    <value>Config</value>
-  </data>
-  <data name="decrease" xml:space="preserve">
-    <value>Decrease</value>
-  </data>
-  <data name="displayFurigana" xml:space="preserve">
-    <value>Display Furigana</value>
-  </data>
-  <data name="displayKanji" xml:space="preserve">
-    <value>Display Kanji</value>
-  </data>
-  <data name="displayMeaning" xml:space="preserve">
-    <value>Display Meaning</value>
-  </data>
-  <data name="file" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="fontSize" xml:space="preserve">
-    <value>Font Size</value>
-  </data>
-  <data name="increase" xml:space="preserve">
-    <value>Increase</value>
-  </data>
-  <data name="kanji" xml:space="preserve">
-    <value>Kanji</value>
-  </data>
-  <data name="next" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="showID" xml:space="preserve">
-    <value>Show ID</value>
-  </data>
 </root>

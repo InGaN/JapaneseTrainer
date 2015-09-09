@@ -20,7 +20,7 @@ namespace JapaneseTrainer
 
         public Form1()
         {      
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
+            //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
             InitializeComponent();
 
             uri = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -71,6 +71,12 @@ namespace JapaneseTrainer
             configHandler.setFormSize(this.Size);
             configHandler.createConfig();
             MessageBox.Show("Closing Program");
+        }
+
+        private void configToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormConfig formConfig = new FormConfig(configHandler);
+            formConfig.Show();
         }    
     }
 }

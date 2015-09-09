@@ -7,11 +7,14 @@ using System.Drawing;
 
 namespace JapaneseTrainer
 {
-    class ConfigHandler
+    public class ConfigHandler
     {
         int fontSize;
         int formWidth;
         int formHeight;
+
+        // 1 = show ID
+        byte flags;
 
         public ConfigHandler(Size formSize)
         {
@@ -23,13 +26,25 @@ namespace JapaneseTrainer
             formWidth = formSize.Width;
             formHeight = formSize.Height;
 
+            flags = 0;
+
             if (System.IO.File.Exists(pathString))
             {
-                string[] read = System.IO.File.ReadAllLines(pathString);
-                read = read[0].Split(',');
-                fontSize = Int32.Parse(read[0]);
-                formWidth = Int32.Parse(read[1]);
-                formHeight = Int32.Parse(read[2]);
+                try
+                {
+                    string[] read = System.IO.File.ReadAllLines(pathString);
+                    read = read[0].Split(',');
+                    fontSize = Int32.Parse(read[0]);
+                    formWidth = Int32.Parse(read[1]);
+                    formHeight = Int32.Parse(read[2]);
+                    flags = Byte.Parse(read[3]);
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine("ERROR - Index out of bounds reading config file!");
+                    fontSize = 30;
+                    createConfig();
+                }                
             }
             else
             {
@@ -47,7 +62,7 @@ namespace JapaneseTrainer
             pathString = System.IO.Path.Combine(pathString, fileName);
             Console.WriteLine("Path to my file: {0}\n", pathString);
 
-            string configString = fontSize.ToString() + "," + formWidth + "," + formHeight;
+            string configString = fontSize.ToString() + "," + formWidth + "," + formHeight + "," + flags;
 
             if (!System.IO.File.Exists(pathString))
             {
@@ -105,6 +120,14 @@ namespace JapaneseTrainer
         public int getFormWidth()
         {
             return formWidth;
+        }
+        public byte getFlags()
+        {
+            return flags;
+        }
+        public void setFlags(byte newFlags)
+        {
+            flags = newFlags;
         }
     }
 }

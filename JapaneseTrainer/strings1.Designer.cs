@@ -70,6 +70,15 @@ namespace JapaneseTrainer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config.
+        /// </summary>
+        internal static string config {
+            get {
+                return ResourceManager.GetString("config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Decrease.
         /// </summary>
         internal static string decrease {
@@ -147,6 +156,15 @@ namespace JapaneseTrainer {
         internal static string next {
             get {
                 return ResourceManager.GetString("next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show ID.
+        /// </summary>
+        internal static string showID {
+            get {
+                return ResourceManager.GetString("showID", resourceCulture);
             }
         }
     }

@@ -48,6 +48,7 @@ namespace JapaneseTrainer
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.innerTable = new System.Windows.Forms.TableLayoutPanel();
+            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -68,7 +69,8 @@ namespace JapaneseTrainer
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.kanjiToolStripMenuItem});
+            this.kanjiToolStripMenuItem,
+            this.configToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(692, 24);
@@ -227,6 +229,13 @@ namespace JapaneseTrainer
             this.innerTable.Size = new System.Drawing.Size(0, 0);
             this.innerTable.TabIndex = 6;
             // 
+            // configToolStripMenuItem
+            // 
+            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.configToolStripMenuItem.Text = global::JapaneseTrainer.strings.config;
+            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,6 +276,7 @@ namespace JapaneseTrainer
         private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel innerTable;
+        private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
     }
 }
 

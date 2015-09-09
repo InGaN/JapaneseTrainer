@@ -77,7 +77,7 @@ namespace JapaneseTrainer
         {            
             string[] read = generateNewSentence();
             expandTable(read[1], read[3], panel);
-            EnglishLabel.Text = read[2];
+            EnglishLabel.Text = (Config.getFlags() % 2 == 1) ? read[2] + "\n\rid: " + read[0] : read[2];
 
             int soundId;
             if (Int32.TryParse(read[0], out soundId))                
@@ -137,8 +137,7 @@ namespace JapaneseTrainer
                     Label furiganaLabel = new Label() { Text = "", Font = (new Font("Microsoft Sans Serif", Config.getFontSize() / 2, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)))), TextAlign = ContentAlignment.BottomCenter, AutoSize = true, Dock = DockStyle.Fill };
                     Label kanjiLabel = new Label() { Font = (new Font("Microsoft Sans Serif", Config.getFontSize(), System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)))), TextAlign = ContentAlignment.TopCenter, AutoSize = true, Dock = DockStyle.Fill };
 
-                    kanjiLabel.ForeColor = (verbFlag) ? Color.FromArgb(0, 255, 0, 0) : Color.FromArgb(0, 0, 0, 0);
-                    furiganaLabel.ForeColor = (verbFlag) ? Color.FromArgb(0, 255, 0, 0) : Color.FromArgb(0, 0, 0, 0);
+                    setLabelColor(furiganaLabel, kanjiLabel, verbFlag);
                     
                     if (!isKana(inputKanji[x]))
                     {
@@ -166,6 +165,12 @@ namespace JapaneseTrainer
             {
                 Console.WriteLine("Unable to play sound: " + e.ToString());
             }
+        }
+
+        private void setLabelColor( Label furiganaLabel, Label kanjiLabel, bool verbFlag)
+        {
+            kanjiLabel.ForeColor = (verbFlag) ? Color.FromArgb(0, 255, 0, 0) : Color.FromArgb(0, 0, 0, 0);
+            furiganaLabel.ForeColor = (verbFlag) ? Color.FromArgb(0, 255, 0, 0) : Color.FromArgb(0, 0, 0, 0);
         }
     }
 }
