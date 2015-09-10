@@ -150,6 +150,9 @@
   <data name="config" xml:space="preserve">
     <value>config</value>
   </data>
+  <data name="highlightVerbs" xml:space="preserve">
+    <value>Highlight Verbs</value>
+  </data>
   <data name="showID" xml:space="preserve">
     <value>Show ID</value>
   </data>

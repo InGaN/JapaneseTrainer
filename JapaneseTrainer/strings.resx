@@ -141,6 +141,9 @@
   <data name="fontSize" xml:space="preserve">
     <value>Font Size</value>
   </data>
+  <data name="highlightVerbs" xml:space="preserve">
+    <value>Highlight Verbs</value>
+  </data>
   <data name="increase" xml:space="preserve">
     <value>Increase</value>
   </data>

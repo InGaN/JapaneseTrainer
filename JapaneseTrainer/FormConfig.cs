@@ -30,8 +30,13 @@ namespace JapaneseTrainer
             }
             else
             {
-                configHandler.setFlags(0);
+                configHandler.unsetFlags(1);
             }
+            configHandler.createConfig();
+        }
+
+        private void cbHighlightVerbs_CheckedChanged(object sender, EventArgs e)
+        {
             configHandler.createConfig();
         }
     }

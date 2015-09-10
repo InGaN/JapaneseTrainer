@@ -133,6 +133,15 @@ namespace JapaneseTrainer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Highlight Verbs.
+        /// </summary>
+        internal static string highlightVerbs {
+            get {
+                return ResourceManager.GetString("highlightVerbs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Increase.
         /// </summary>
         internal static string increase {

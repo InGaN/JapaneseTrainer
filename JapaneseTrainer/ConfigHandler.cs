@@ -12,9 +12,10 @@ namespace JapaneseTrainer
         int fontSize;
         int formWidth;
         int formHeight;
-
-        // 1 = show ID
+                
         byte flags;
+        const byte FLAG_SHOWID = 1;
+        const byte FLAG_HIGHLIGHTVERBS = 2;
 
         public ConfigHandler(Size formSize)
         {
@@ -127,6 +128,10 @@ namespace JapaneseTrainer
         }
         public void setFlags(byte newFlags)
         {
+            flags = newFlags;
+        }
+        public void unsetFlags(byte newFlags)
+        {            
             flags = newFlags;
         }
     }
