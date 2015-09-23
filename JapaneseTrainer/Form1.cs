@@ -77,6 +77,12 @@ namespace JapaneseTrainer
         {
             FormConfig formConfig = new FormConfig(configHandler);
             formConfig.Show();
-        }    
+        }
+
+        private void verbsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSingular formSingle = new FormSingular('V', configHandler);
+            formSingle.Show();
+        }
     }
 }

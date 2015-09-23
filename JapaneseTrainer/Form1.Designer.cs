@@ -42,13 +42,15 @@ namespace JapaneseTrainer
             this.fontSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.increaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trainersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verbsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbTimer = new System.Windows.Forms.ProgressBar();
             this.lblMeaning = new System.Windows.Forms.Label();
             this.lblJapanese = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.innerTable = new System.Windows.Forms.TableLayoutPanel();
-            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -70,7 +72,8 @@ namespace JapaneseTrainer
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.kanjiToolStripMenuItem,
-            this.configToolStripMenuItem});
+            this.configToolStripMenuItem,
+            this.trainersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(692, 24);
@@ -88,7 +91,8 @@ namespace JapaneseTrainer
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = global::JapaneseTrainer.strings.close;
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -146,6 +150,28 @@ namespace JapaneseTrainer
             this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.decreaseToolStripMenuItem.Text = global::JapaneseTrainer.strings.decrease;
             this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
+            // 
+            // configToolStripMenuItem
+            // 
+            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.configToolStripMenuItem.Text = global::JapaneseTrainer.strings.config;
+            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
+            // 
+            // trainersToolStripMenuItem
+            // 
+            this.trainersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verbsToolStripMenuItem});
+            this.trainersToolStripMenuItem.Name = "trainersToolStripMenuItem";
+            this.trainersToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.trainersToolStripMenuItem.Text = "Trainers";
+            // 
+            // verbsToolStripMenuItem
+            // 
+            this.verbsToolStripMenuItem.Name = "verbsToolStripMenuItem";
+            this.verbsToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.verbsToolStripMenuItem.Text = "Verbs";
+            this.verbsToolStripMenuItem.Click += new System.EventHandler(this.verbsToolStripMenuItem_Click);
             // 
             // pbTimer
             // 
@@ -229,13 +255,6 @@ namespace JapaneseTrainer
             this.innerTable.Size = new System.Drawing.Size(0, 0);
             this.innerTable.TabIndex = 6;
             // 
-            // configToolStripMenuItem
-            // 
-            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.configToolStripMenuItem.Text = global::JapaneseTrainer.strings.config;
-            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +296,8 @@ namespace JapaneseTrainer
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel innerTable;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trainersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verbsToolStripMenuItem;
     }
 }
 

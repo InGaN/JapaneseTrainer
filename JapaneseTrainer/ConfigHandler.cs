@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Drawing;
 
@@ -14,6 +15,13 @@ namespace JapaneseTrainer
         int formHeight;
                 
         byte flags;
+        byte trainerFlags;
+
+        Timer trainerTimer;
+        bool trainerTimerEnabled;
+        double trainerTimerInterval;
+        double trainerTimerInterval2;
+
         const byte FLAG_SHOWID = 1;
         const byte FLAG_HIGHLIGHTVERBS = 2;
 
@@ -27,7 +35,7 @@ namespace JapaneseTrainer
             formWidth = formSize.Width;
             formHeight = formSize.Height;
 
-            flags = 0;
+            flags = trainerFlags = 0;
 
             if (System.IO.File.Exists(pathString))
             {
@@ -39,12 +47,17 @@ namespace JapaneseTrainer
                     formWidth = Int32.Parse(read[1]);
                     formHeight = Int32.Parse(read[2]);
                     flags = Byte.Parse(read[3]);
+                    trainerFlags = Byte.Parse(read[4]);
+                    trainerTimerEnabled = bool.Parse(read[5]);
+                    trainerTimerInterval = double.Parse(read[6]);
+                    trainerTimerInterval2 = double.Parse(read[7]);
                 }
                 catch (IndexOutOfRangeException ex)
                 {
                     Console.WriteLine("ERROR - Index out of bounds reading config file!");
                     fontSize = 30;
-                    createConfig();
+                    trainerTimerInterval = trainerTimerInterval2 = 1;
+                    createConfig();                    
                 }                
             }
             else
@@ -63,7 +76,7 @@ namespace JapaneseTrainer
             pathString = System.IO.Path.Combine(pathString, fileName);
             Console.WriteLine("Path to my file: {0}\n", pathString);
 
-            string configString = fontSize.ToString() + "," + formWidth + "," + formHeight + "," + flags;
+            string configString = fontSize.ToString() + "," + formWidth + "," + formHeight + "," + flags + "," + trainerFlags + "," + trainerTimerEnabled + "," + trainerTimerInterval + "," + trainerTimerInterval2;
 
             if (!System.IO.File.Exists(pathString))
             {
@@ -133,6 +146,57 @@ namespace JapaneseTrainer
         public void unsetFlags(byte newFlags)
         {            
             flags = newFlags;
+        }
+        public byte getTrainerFlags()
+        {
+            return trainerFlags;
+        }
+        public void setTrainerFlags(int newFlags)
+        {
+            trainerFlags = (byte)newFlags;
+        }
+        public void enableTrainerTimer(bool value)
+        {
+            trainerTimerEnabled = value;
+        }
+        public void setTrainerTimerInterval(double interval)
+        {
+            if(interval > 0) {
+                trainerTimerInterval = interval;
+            }
+        }
+        public void setTrainerTimerInterval2(double interval)
+        {
+            if (interval > 0)
+            {
+                trainerTimerInterval2 = interval;
+            }
+        }
+        public bool getTrainerTimerEnabled()
+        {
+            return trainerTimerEnabled;
+        }
+        public double getTrainerTimerInterval()
+        {
+            return trainerTimerInterval;
+        }
+        public double getTrainerTimerInterval2()
+        {
+            return trainerTimerInterval2;
+        }
+
+        public void startTrainerTimer()
+        {
+            if(trainerTimerEnabled)
+            {
+                trainerTimer = new Timer(trainerTimerInterval * 1000);
+                trainerTimer.Start();
+                //trainerTimer.Elapsed += new ElapsedEventHandler(FormSingular.remoteTest);              
+            }            
+        }   
+        public Timer getTrainerTimer()
+        {
+            return trainerTimer;
         }
     }
 }

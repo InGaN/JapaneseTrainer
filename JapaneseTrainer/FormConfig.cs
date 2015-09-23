@@ -20,6 +20,10 @@ namespace JapaneseTrainer
             configHandler = config;
 
             cbShowID.Checked = (configHandler.getFlags() % 2 == 1);
+            cbx_trainer_timer.Checked = configHandler.getTrainerTimerEnabled();            
+            num_timer1.Value = (configHandler.getTrainerTimerInterval() < 2) ? 1 : (decimal)configHandler.getTrainerTimerInterval();
+            num_timer2.Value = (configHandler.getTrainerTimerInterval2() < 2) ? 1 : (decimal)configHandler.getTrainerTimerInterval2();
+            num_timer1.Enabled = num_timer2.Enabled = lbl_timer1.Enabled = lbl_timer2.Enabled = lbl_timer3.Enabled = lbl_timer4.Enabled = (cbx_trainer_timer.Checked);
         }
 
         private void cbShowID_CheckedChanged(object sender, EventArgs e)
@@ -38,6 +42,21 @@ namespace JapaneseTrainer
         private void cbHighlightVerbs_CheckedChanged(object sender, EventArgs e)
         {
             configHandler.createConfig();
+        }
+
+        private void cbx_trainer_timer_CheckedChanged(object sender, EventArgs e)
+        {
+            num_timer1.Enabled = num_timer2.Enabled = lbl_timer1.Enabled = lbl_timer2.Enabled = lbl_timer3.Enabled = lbl_timer4.Enabled = (((CheckBox)sender).Checked);
+            configHandler.enableTrainerTimer(((CheckBox)sender).Checked);
+        }
+        private void num_timer_ValueChanged(object sender, EventArgs e)
+        {
+            configHandler.setTrainerTimerInterval((double)((NumericUpDown)sender).Value);
+        }
+
+        private void num_timer2_ValueChanged(object sender, EventArgs e)
+        {
+            configHandler.setTrainerTimerInterval2((double)((NumericUpDown)sender).Value);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace JapaneseTrainer
         Label JapaneseLabel;
         Label EnglishLabel;
         SQLiteConnection dbConnection;
+        string sqliteVersion = "3";
         ConfigHandler Config;
         int totalEntries;
         string uri;
@@ -26,7 +27,7 @@ namespace JapaneseTrainer
             uri = audioURI;
 
             //SQLiteConnection.CreateFile("JapaneseDatabase.sqlite");
-            dbConnection = new SQLiteConnection("Data Source=dbKanji.sqlite;Version=3;");
+            dbConnection = new SQLiteConnection("Data Source=dbKanji.sqlite;Version="+sqliteVersion+";");
             dbConnection.Open();
 
             string sql = "SELECT COUNT(*) FROM SENTENCES";
