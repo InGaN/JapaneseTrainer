@@ -15,11 +15,15 @@ namespace JapaneseTrainer
         string databaseName, tableName;
         string sqliteVersion = "3";
         int totalEntries;
+        int priority;
+        int currentID;
+        int index = 0;
+        int[] currentArray;
 
         public SingularCreator(char sessionType, ConfigHandler configHandler)
         {
             // throw exception instead and catch in creation on FormSingular.cs
-            config = configHandler;
+            config = configHandler;            
             switch (sessionType)
             {
                 case 'v':
@@ -33,6 +37,7 @@ namespace JapaneseTrainer
                     Console.WriteLine("ERROR - invalid session type for singular trainer!");
                     break;
             }
+            currentArray = createProiritizedArray();
         }
 
         private void setupDatabase()
@@ -46,17 +51,84 @@ namespace JapaneseTrainer
                 Console.WriteLine("Total read = " + totalEntries);
         }
 
-        public string[] generateSingular()
+        private int[] createProiritizedArray()
         {
+            Console.WriteLine("Prioritizing items...");            
+            int[] totalArray = { };
+            for(int x = 9; x >= 0; x--)
+            {
+                List<int> IDarray = new List<int>();
+                string sql = "SELECT id FROM " + tableName + " WHERE priority=" + x;
+                SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
+                SQLiteDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    IDarray.Add(Int32.Parse(read["id"].ToString()));
+                }
+                int[] array = IDarray.ToArray();
+                FisherYatesShuffle(array);
+                totalArray = totalArray.Concat(array).ToArray();    
+            }
+
+            foreach (int value in totalArray)
+            {
+                Console.Write(value);
+            }
+            Console.WriteLine("");
+            return totalArray;
+        }
+
+        private static void FisherYatesShuffle<T>(T[] array)
+        {
+            int n = array.Length;
             Random random = new Random();
-            int id = random.Next(1, totalEntries + 1);
+            for (int i = 0; i < n; i++)
+            {                
+                int r = i + (int)(random.NextDouble() * (n - i));
+                T t = array[r];
+                array[r] = array[i];
+                array[i] = t;
+            }
+        }
+
+        public string[] generateSingular()
+        {            
+            int id = currentArray[index];
+            index++;
+            if(index >= totalEntries)
+            {
+                index = 0;
+                currentArray = createProiritizedArray();
+                Console.WriteLine("Generating new array of IDs");
+            }
             string sql = "SELECT * FROM " + tableName + " WHERE id=" + id.ToString();
 
             SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
             SQLiteDataReader read = cmd.ExecuteReader();
 
             string[] array = { read[0].ToString(), read[1].ToString(), read[2].ToString(), read[3].ToString(), read[4].ToString()};
+            currentID = Int32.Parse(read[0].ToString());
+            priority = Int32.Parse(read[5].ToString());
+
             return array;
+        }
+
+        public void changePriority(int newPriority)
+        {
+            if (newPriority <= 9 && newPriority >= 0)
+            {
+                priority = newPriority;
+                string sql = "UPDATE " + tableName + " SET priority=" + newPriority.ToString() + " WHERE id=" + currentID.ToString();
+
+                SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
+                SQLiteDataReader read = cmd.ExecuteReader();
+                Console.WriteLine("Database updated - ID:" + currentID + " new priority:" + newPriority.ToString());
+            }
+        }
+
+        public int getPriority()
+        {
+            return priority;
         }
     }
 }

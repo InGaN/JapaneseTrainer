@@ -38,8 +38,6 @@
             this.bar_trainer_timer = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.nextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.displayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFuriganaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +46,11 @@
             this.ToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.showIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kanjiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.increasePriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decreasePriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.tblPanel_container.SuspendLayout();
             this.tblPanel_japanese.SuspendLayout();
             this.tblPanel_meaning.SuspendLayout();
@@ -163,6 +166,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.kanjiToolStripMenuItem,
             this.displayToolStripMenuItem,
             this.configToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -174,30 +178,16 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nextToolStripMenuItem,
-            this.toolStripMenuItem2,
             this.closeToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
             // 
-            // nextToolStripMenuItem
-            // 
-            this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.nextToolStripMenuItem.Text = "Next";
-            this.nextToolStripMenuItem.Click += new System.EventHandler(this.nextToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(142, 6);
-            // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -260,6 +250,43 @@
             this.configToolStripMenuItem.Text = "Config";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
+            // kanjiToolStripMenuItem
+            // 
+            this.kanjiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nextToolStripMenuItem1,
+            this.toolStripMenuItem3,
+            this.increasePriorityToolStripMenuItem,
+            this.decreasePriorityToolStripMenuItem});
+            this.kanjiToolStripMenuItem.Name = "kanjiToolStripMenuItem";
+            this.kanjiToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.kanjiToolStripMenuItem.Text = "Kanji";
+            // 
+            // increasePriorityToolStripMenuItem
+            // 
+            this.increasePriorityToolStripMenuItem.Name = "increasePriorityToolStripMenuItem";
+            this.increasePriorityToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.increasePriorityToolStripMenuItem.Text = "Increase priority";
+            this.increasePriorityToolStripMenuItem.Click += new System.EventHandler(this.increasePriorityToolStripMenuItem_Click);
+            // 
+            // decreasePriorityToolStripMenuItem
+            // 
+            this.decreasePriorityToolStripMenuItem.Name = "decreasePriorityToolStripMenuItem";
+            this.decreasePriorityToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.decreasePriorityToolStripMenuItem.Text = "Decrease priority";
+            this.decreasePriorityToolStripMenuItem.Click += new System.EventHandler(this.decreasePriorityToolStripMenuItem_Click);
+            // 
+            // nextToolStripMenuItem1
+            // 
+            this.nextToolStripMenuItem1.Name = "nextToolStripMenuItem1";
+            this.nextToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+            this.nextToolStripMenuItem1.Text = "Next";
+            this.nextToolStripMenuItem1.Click += new System.EventHandler(this.nextToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(159, 6);
+            // 
             // FormSingular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,8 +331,11 @@
         private System.Windows.Forms.ToolStripMenuItem showMeaningsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem showIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ProgressBar bar_trainer_timer;
+        private System.Windows.Forms.ToolStripMenuItem kanjiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem increasePriorityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem decreasePriorityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
     }
 }

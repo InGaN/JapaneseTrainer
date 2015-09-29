@@ -16,11 +16,14 @@ namespace JapaneseTrainer
         SingularCreator singularCreator;
         ConfigHandler config;
         System.Windows.Forms.Timer updateBarTimer;
+        bool paused;
+        bool hidden;
 
         public FormSingular(char sessionType, ConfigHandler configHandler)
         {
             singularCreator = new SingularCreator(sessionType, configHandler);
             config = configHandler;
+            paused = false;
             InitializeComponent();
             setupConfig();
             newSingular();
@@ -70,10 +73,12 @@ namespace JapaneseTrainer
             lbl_japanese.ForeColor = ((config.getTrainerFlags() >> 2) % 2 != 1) ? SystemColors.Control : SystemColors.ControlText;
             lbl_meaning.ForeColor = ((config.getTrainerFlags() >> 1) % 2 != 1) ? SystemColors.Control : SystemColors.ControlText;
             lbl_extra.ForeColor = ((config.getTrainerFlags() >> 1) % 2 != 1) ? SystemColors.Control : SystemColors.ControlText;
+            hidden = true;
         }
 
         private void revealHidden()
         {
+            hidden = false;
             lbl_furigana.ForeColor = SystemColors.ControlText;
             lbl_japanese.ForeColor = SystemColors.ControlText;
             lbl_meaning.ForeColor = SystemColors.ControlText;
@@ -125,26 +130,41 @@ namespace JapaneseTrainer
             config.setTrainerFlags(config.getTrainerFlags() ^ 1);
         }
 
-        private void nextToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            newSingular();
-            setVisualsLabels();
-        }
-
         private void FormSingular_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Space) // try to bind a key in config
-            {
-                newSingular();
-                setVisualsLabels();
+            if (e.KeyCode == Keys.Space) // try to bind a key in config
+            {             
+                paused = !paused;
             }
+            else if ((e.KeyCode == Keys.N))
+            {
+                if (hidden)
+                {
+                    bar_trainer_timer.Value = 0;
+                    revealHidden();
+                }
+                else
+                {
+                    updateBarTimer.Stop();
+                    bar_trainer_timer.Value = 0;
+                    updateBarTimer = new System.Windows.Forms.Timer();
+                    updateBarTimer.Tick += new EventHandler(updateBarTimerTick);
+                    bar_trainer_timer.Maximum = (int)(config.getTrainerTimerInterval() * 1000);
+                    newSingular();
+                    setVisualsLabels();
+                    updateBarTimer.Start();
+                }
+            }            
         }
 
         private void updateBarTimerTick(object sender, EventArgs e)
         {
             int interval = 100;
             if ((bar_trainer_timer.Value + interval) < bar_trainer_timer.Maximum)
-                bar_trainer_timer.Value += interval;
+            {
+                if (!paused)
+                    bar_trainer_timer.Value += interval;
+            }
             else
             {
                 bar_trainer_timer.Value = 0;
@@ -156,7 +176,10 @@ namespace JapaneseTrainer
         {
             int interval = 100;
             if ((bar_trainer_timer.Value + interval) < bar_trainer_timer.Maximum)
-                bar_trainer_timer.Value += interval;
+            {
+                if (!paused)
+                    bar_trainer_timer.Value += interval;
+            }                
             else
             {
                 updateBarTimer.Stop();
@@ -178,6 +201,22 @@ namespace JapaneseTrainer
         private void FormSingular_FormClosed(object sender, FormClosedEventArgs e)
         {
             updateBarTimer.Stop();
-        }       
+        }
+
+        private void nextToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            newSingular();
+            setVisualsLabels();
+        }
+
+        private void increasePriorityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            singularCreator.changePriority(singularCreator.getPriority() + 1);
+        }
+
+        private void decreasePriorityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            singularCreator.changePriority(singularCreator.getPriority() - 1);
+        }
     }
 }
