@@ -84,5 +84,17 @@ namespace JapaneseTrainer
             FormSingular formSingle = new FormSingular('V', configHandler);
             formSingle.Show();
         }
+
+        private void adjectivesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSingular formSingle = new FormSingular('A', configHandler);
+            formSingle.Show();
+        }
+
+        private void nounsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSingular formSingle = new FormSingular('N', configHandler);
+            formSingle.Show();
+        }
     }
 }

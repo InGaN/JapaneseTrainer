@@ -51,6 +51,8 @@ namespace JapaneseTrainer
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.innerTable = new System.Windows.Forms.TableLayoutPanel();
+            this.adjectivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nounsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -92,7 +94,7 @@ namespace JapaneseTrainer
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.closeToolStripMenuItem.Text = global::JapaneseTrainer.strings.close;
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -161,7 +163,9 @@ namespace JapaneseTrainer
             // trainersToolStripMenuItem
             // 
             this.trainersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verbsToolStripMenuItem});
+            this.verbsToolStripMenuItem,
+            this.adjectivesToolStripMenuItem,
+            this.nounsToolStripMenuItem});
             this.trainersToolStripMenuItem.Name = "trainersToolStripMenuItem";
             this.trainersToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.trainersToolStripMenuItem.Text = "Trainers";
@@ -169,7 +173,7 @@ namespace JapaneseTrainer
             // verbsToolStripMenuItem
             // 
             this.verbsToolStripMenuItem.Name = "verbsToolStripMenuItem";
-            this.verbsToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.verbsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verbsToolStripMenuItem.Text = "Verbs";
             this.verbsToolStripMenuItem.Click += new System.EventHandler(this.verbsToolStripMenuItem_Click);
             // 
@@ -255,6 +259,20 @@ namespace JapaneseTrainer
             this.innerTable.Size = new System.Drawing.Size(0, 0);
             this.innerTable.TabIndex = 6;
             // 
+            // adjectivesToolStripMenuItem
+            // 
+            this.adjectivesToolStripMenuItem.Name = "adjectivesToolStripMenuItem";
+            this.adjectivesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.adjectivesToolStripMenuItem.Text = "Adjectives";
+            this.adjectivesToolStripMenuItem.Click += new System.EventHandler(this.adjectivesToolStripMenuItem_Click);
+            // 
+            // nounsToolStripMenuItem
+            // 
+            this.nounsToolStripMenuItem.Name = "nounsToolStripMenuItem";
+            this.nounsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nounsToolStripMenuItem.Text = "Nouns";
+            this.nounsToolStripMenuItem.Click += new System.EventHandler(this.nounsToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +316,8 @@ namespace JapaneseTrainer
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trainersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verbsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adjectivesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nounsToolStripMenuItem;
     }
 }
 

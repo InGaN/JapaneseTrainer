@@ -30,13 +30,25 @@ namespace JapaneseTrainer
                 case 'V':
                     Console.WriteLine("starting verb trainer");
                     databaseName = "JP_Verbs";
-                    tableName = "VERBS";
-                    setupDatabase();
+                    tableName = "VERBS";                    
+                    break;
+                case 'a':
+                case 'A':
+                    Console.WriteLine("starting adjective trainer");
+                    databaseName = "JP_Adjectives";
+                    tableName = "ADJECTIVES";
+                    break;
+                case 'n':
+                case 'N':
+                    Console.WriteLine("starting noun trainer");
+                    databaseName = "JP_Nouns";
+                    tableName = "NOUNS";
                     break;
                 default:
                     Console.WriteLine("ERROR - invalid session type for singular trainer!");
                     break;
             }
+            setupDatabase();
             currentArray = createProiritizedArray();
         }
 
