@@ -118,7 +118,7 @@ namespace JapaneseTrainer
             SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
             SQLiteDataReader read = cmd.ExecuteReader();
 
-            string[] array = { read[0].ToString(), read[1].ToString(), read[2].ToString(), read[3].ToString(), read[4].ToString()};
+            string[] array = { read[0].ToString(), read[1].ToString(), read[2].ToString(), read[3].ToString(), read[4].ToString() };
             currentID = Int32.Parse(read[0].ToString());
             priority = Int32.Parse(read[5].ToString());
 

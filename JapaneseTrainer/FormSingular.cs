@@ -46,6 +46,7 @@ namespace JapaneseTrainer
         private void newSingular()
         {
             string[] currentSingular = singularCreator.generateSingular();
+            setVisualPriority();
 
             lbl_japanese.Text = currentSingular[1];            
             lbl_meaning.Text = currentSingular[2];
@@ -74,6 +75,28 @@ namespace JapaneseTrainer
             lbl_meaning.ForeColor = ((config.getTrainerFlags() >> 1) % 2 != 1) ? SystemColors.Control : SystemColors.ControlText;
             lbl_extra.ForeColor = ((config.getTrainerFlags() >> 1) % 2 != 1) ? SystemColors.Control : SystemColors.ControlText;
             hidden = true;
+        }
+
+        private void setVisualPriority()
+        {
+            PictureBox[] boxes = { pbx_star1, pbx_star2, pbx_star3, pbx_star4, pbx_star5 };
+            int priority = singularCreator.getPriority();
+            for (int cl = 0; cl<boxes.Length; cl++)
+            {
+                boxes[cl].Image = null;
+            }
+            for (int x = 0; x <= priority; x++)
+            {
+                if ((x == priority) && (x % 2 == 0))
+                {
+                    boxes[x / 2].Image = null;
+                    boxes[x / 2].Image = JapaneseTrainer.Properties.Resources.star_half;
+                }
+                else
+                {
+                    boxes[x / 2].Image = JapaneseTrainer.Properties.Resources.star_full;
+                }                
+            }
         }
 
         private void revealHidden()
