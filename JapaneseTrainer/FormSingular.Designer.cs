@@ -36,6 +36,12 @@
             this.lbl_meaning = new System.Windows.Forms.Label();
             this.lbl_extra = new System.Windows.Forms.Label();
             this.bar_trainer_timer = new System.Windows.Forms.ProgressBar();
+            this.tbl_rating = new System.Windows.Forms.TableLayoutPanel();
+            this.pbx_star1 = new System.Windows.Forms.PictureBox();
+            this.pbx_star2 = new System.Windows.Forms.PictureBox();
+            this.pbx_star3 = new System.Windows.Forms.PictureBox();
+            this.pbx_star4 = new System.Windows.Forms.PictureBox();
+            this.pbx_star5 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,22 +57,16 @@
             this.ToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.showIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbl_rating = new System.Windows.Forms.TableLayoutPanel();
-            this.pbx_star1 = new System.Windows.Forms.PictureBox();
-            this.pbx_star2 = new System.Windows.Forms.PictureBox();
-            this.pbx_star3 = new System.Windows.Forms.PictureBox();
-            this.pbx_star4 = new System.Windows.Forms.PictureBox();
-            this.pbx_star5 = new System.Windows.Forms.PictureBox();
             this.tblPanel_container.SuspendLayout();
             this.tblPanel_japanese.SuspendLayout();
             this.tblPanel_meaning.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.tbl_rating.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star5)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblPanel_container
@@ -173,6 +173,86 @@
             this.bar_trainer_timer.Name = "bar_trainer_timer";
             this.bar_trainer_timer.Size = new System.Drawing.Size(278, 15);
             this.bar_trainer_timer.TabIndex = 2;
+            // 
+            // tbl_rating
+            // 
+            this.tbl_rating.ColumnCount = 5;
+            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tbl_rating.Controls.Add(this.pbx_star1, 0, 0);
+            this.tbl_rating.Controls.Add(this.pbx_star2, 1, 0);
+            this.tbl_rating.Controls.Add(this.pbx_star3, 2, 0);
+            this.tbl_rating.Controls.Add(this.pbx_star4, 3, 0);
+            this.tbl_rating.Controls.Add(this.pbx_star5, 4, 0);
+            this.tbl_rating.Location = new System.Drawing.Point(5, 0);
+            this.tbl_rating.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.tbl_rating.Name = "tbl_rating";
+            this.tbl_rating.RowCount = 1;
+            this.tbl_rating.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tbl_rating.Size = new System.Drawing.Size(100, 20);
+            this.tbl_rating.TabIndex = 3;
+            // 
+            // pbx_star1
+            // 
+            this.pbx_star1.Location = new System.Drawing.Point(0, 0);
+            this.pbx_star1.Margin = new System.Windows.Forms.Padding(0);
+            this.pbx_star1.Name = "pbx_star1";
+            this.pbx_star1.Size = new System.Drawing.Size(20, 20);
+            this.pbx_star1.TabIndex = 0;
+            this.pbx_star1.TabStop = false;
+            this.pbx_star1.Click += new System.EventHandler(this.star1_click);
+            this.pbx_star1.MouseLeave += new System.EventHandler(this.starbox_leave);
+            this.pbx_star1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.star1_move);
+            // 
+            // pbx_star2
+            // 
+            this.pbx_star2.Location = new System.Drawing.Point(20, 0);
+            this.pbx_star2.Margin = new System.Windows.Forms.Padding(0);
+            this.pbx_star2.Name = "pbx_star2";
+            this.pbx_star2.Size = new System.Drawing.Size(20, 20);
+            this.pbx_star2.TabIndex = 1;
+            this.pbx_star2.TabStop = false;
+            this.pbx_star2.Click += new System.EventHandler(this.star2_click);
+            this.pbx_star2.MouseLeave += new System.EventHandler(this.starbox_leave);
+            this.pbx_star2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.star2_move);
+            // 
+            // pbx_star3
+            // 
+            this.pbx_star3.Location = new System.Drawing.Point(40, 0);
+            this.pbx_star3.Margin = new System.Windows.Forms.Padding(0);
+            this.pbx_star3.Name = "pbx_star3";
+            this.pbx_star3.Size = new System.Drawing.Size(20, 20);
+            this.pbx_star3.TabIndex = 2;
+            this.pbx_star3.TabStop = false;
+            this.pbx_star3.Click += new System.EventHandler(this.star3_click);
+            this.pbx_star3.MouseLeave += new System.EventHandler(this.starbox_leave);
+            this.pbx_star3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.star3_move);
+            // 
+            // pbx_star4
+            // 
+            this.pbx_star4.Location = new System.Drawing.Point(60, 0);
+            this.pbx_star4.Margin = new System.Windows.Forms.Padding(0);
+            this.pbx_star4.Name = "pbx_star4";
+            this.pbx_star4.Size = new System.Drawing.Size(20, 20);
+            this.pbx_star4.TabIndex = 3;
+            this.pbx_star4.TabStop = false;
+            this.pbx_star4.Click += new System.EventHandler(this.star4_click);
+            this.pbx_star4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.star4_move);
+            // 
+            // pbx_star5
+            // 
+            this.pbx_star5.Location = new System.Drawing.Point(80, 0);
+            this.pbx_star5.Margin = new System.Windows.Forms.Padding(0);
+            this.pbx_star5.Name = "pbx_star5";
+            this.pbx_star5.Size = new System.Drawing.Size(20, 20);
+            this.pbx_star5.TabIndex = 4;
+            this.pbx_star5.TabStop = false;
+            this.pbx_star5.Click += new System.EventHandler(this.star5_click);
+            this.pbx_star5.MouseLeave += new System.EventHandler(this.starbox_leave);
+            this.pbx_star5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.star5_move);
             // 
             // menuStrip1
             // 
@@ -299,72 +379,6 @@
             this.configToolStripMenuItem.Text = "Config";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
-            // tbl_rating
-            // 
-            this.tbl_rating.ColumnCount = 5;
-            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_rating.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_rating.Controls.Add(this.pbx_star1, 0, 0);
-            this.tbl_rating.Controls.Add(this.pbx_star2, 1, 0);
-            this.tbl_rating.Controls.Add(this.pbx_star3, 2, 0);
-            this.tbl_rating.Controls.Add(this.pbx_star4, 3, 0);
-            this.tbl_rating.Controls.Add(this.pbx_star5, 4, 0);
-            this.tbl_rating.Location = new System.Drawing.Point(5, 0);
-            this.tbl_rating.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.tbl_rating.Name = "tbl_rating";
-            this.tbl_rating.RowCount = 1;
-            this.tbl_rating.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tbl_rating.Size = new System.Drawing.Size(100, 20);
-            this.tbl_rating.TabIndex = 3;
-            // 
-            // pbx_star1
-            // 
-            this.pbx_star1.Location = new System.Drawing.Point(0, 0);
-            this.pbx_star1.Margin = new System.Windows.Forms.Padding(0);
-            this.pbx_star1.Name = "pbx_star1";
-            this.pbx_star1.Size = new System.Drawing.Size(20, 20);
-            this.pbx_star1.TabIndex = 0;
-            this.pbx_star1.TabStop = false;
-            // 
-            // pbx_star2
-            // 
-            this.pbx_star2.Location = new System.Drawing.Point(20, 0);
-            this.pbx_star2.Margin = new System.Windows.Forms.Padding(0);
-            this.pbx_star2.Name = "pbx_star2";
-            this.pbx_star2.Size = new System.Drawing.Size(20, 20);
-            this.pbx_star2.TabIndex = 1;
-            this.pbx_star2.TabStop = false;
-            // 
-            // pbx_star3
-            // 
-            this.pbx_star3.Location = new System.Drawing.Point(40, 0);
-            this.pbx_star3.Margin = new System.Windows.Forms.Padding(0);
-            this.pbx_star3.Name = "pbx_star3";
-            this.pbx_star3.Size = new System.Drawing.Size(20, 20);
-            this.pbx_star3.TabIndex = 2;
-            this.pbx_star3.TabStop = false;
-            // 
-            // pbx_star4
-            // 
-            this.pbx_star4.Location = new System.Drawing.Point(60, 0);
-            this.pbx_star4.Margin = new System.Windows.Forms.Padding(0);
-            this.pbx_star4.Name = "pbx_star4";
-            this.pbx_star4.Size = new System.Drawing.Size(20, 20);
-            this.pbx_star4.TabIndex = 3;
-            this.pbx_star4.TabStop = false;
-            // 
-            // pbx_star5
-            // 
-            this.pbx_star5.Location = new System.Drawing.Point(80, 0);
-            this.pbx_star5.Margin = new System.Windows.Forms.Padding(0);
-            this.pbx_star5.Name = "pbx_star5";
-            this.pbx_star5.Size = new System.Drawing.Size(20, 20);
-            this.pbx_star5.TabIndex = 4;
-            this.pbx_star5.TabStop = false;
-            // 
             // FormSingular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,14 +397,14 @@
             this.tblPanel_japanese.PerformLayout();
             this.tblPanel_meaning.ResumeLayout(false);
             this.tblPanel_meaning.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.tbl_rating.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_star5)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

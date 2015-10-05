@@ -136,6 +136,7 @@ namespace JapaneseTrainer
                 SQLiteDataReader read = cmd.ExecuteReader();
                 Console.WriteLine("Database updated - ID:" + currentID + " new priority:" + newPriority.ToString());
             }
+            priority = newPriority;
         }
 
         public int getPriority()

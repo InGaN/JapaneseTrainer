@@ -99,6 +99,35 @@ namespace JapaneseTrainer
             }
         }
 
+        private void setVisualPriority(int priority)
+        {
+            pbx_star1.Image = null;
+            pbx_star2.Image = null;
+            pbx_star3.Image = null;
+            pbx_star4.Image = null;
+            pbx_star5.Image = null;
+            if (priority == 0)
+                pbx_star1.Image = JapaneseTrainer.Properties.Resources.star_half;
+            if (priority > 0)
+                pbx_star1.Image = JapaneseTrainer.Properties.Resources.star_full;
+            if (priority > 1)
+                pbx_star2.Image = JapaneseTrainer.Properties.Resources.star_half;
+            if (priority > 2)
+                pbx_star2.Image = JapaneseTrainer.Properties.Resources.star_full;
+            if (priority > 3)
+                pbx_star3.Image = JapaneseTrainer.Properties.Resources.star_half;
+            if (priority > 4)
+                pbx_star3.Image = JapaneseTrainer.Properties.Resources.star_full;
+            if (priority > 5)
+                pbx_star4.Image = JapaneseTrainer.Properties.Resources.star_half;
+            if (priority > 6)
+                pbx_star4.Image = JapaneseTrainer.Properties.Resources.star_full;
+            if (priority > 7)
+                pbx_star5.Image = JapaneseTrainer.Properties.Resources.star_half;
+            if (priority > 8)
+                pbx_star5.Image = JapaneseTrainer.Properties.Resources.star_full;
+        }
+
         private void revealHidden()
         {
             hidden = false;
@@ -240,6 +269,76 @@ namespace JapaneseTrainer
         private void decreasePriorityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             singularCreator.changePriority(singularCreator.getPriority() - 1);
+        }
+
+        private void star5_click(object sender, EventArgs e)
+        {
+            var mouse = pbx_star5.PointToClient(Cursor.Position);
+            singularCreator.changePriority((mouse.X > (pbx_star5.Width / 2)) ? 9 : 8);
+            setVisualPriority();
+        }
+
+        private void star5_move(object sender, MouseEventArgs e)
+        {
+            var mouse = pbx_star5.PointToClient(Cursor.Position);
+            setVisualPriority((mouse.X > (pbx_star5.Width / 2)) ? 9 : 8);        
+        }
+
+        private void star4_click(object sender, EventArgs e)
+        {
+            var mouse = pbx_star4.PointToClient(Cursor.Position);
+            singularCreator.changePriority((mouse.X > (pbx_star4.Width / 2)) ? 7 : 6);
+            setVisualPriority();
+        }
+
+        private void star4_move(object sender, MouseEventArgs e)
+        {
+            var mouse = pbx_star4.PointToClient(Cursor.Position);
+            setVisualPriority((mouse.X > (pbx_star4.Width / 2)) ? 7 : 6);
+        }  
+
+        private void star3_click(object sender, EventArgs e)
+        {
+            var mouse = pbx_star3.PointToClient(Cursor.Position);
+            singularCreator.changePriority((mouse.X > (pbx_star3.Width / 2)) ? 5 : 4);
+            setVisualPriority();
+        }
+
+        private void star3_move(object sender, MouseEventArgs e)
+        {
+            var mouse = pbx_star3.PointToClient(Cursor.Position);
+            setVisualPriority((mouse.X > (pbx_star3.Width / 2)) ? 5 : 4);
+        }
+
+        private void star2_click(object sender, EventArgs e)
+        {
+            var mouse = pbx_star2.PointToClient(Cursor.Position);
+            singularCreator.changePriority((mouse.X > (pbx_star2.Width / 2)) ? 3 : 2);
+            setVisualPriority();
+        }
+
+        private void star2_move(object sender, MouseEventArgs e)
+        {
+            var mouse = pbx_star2.PointToClient(Cursor.Position);
+            setVisualPriority((mouse.X > (pbx_star2.Width / 2)) ? 3 : 2);
+        }
+
+        private void star1_click(object sender, EventArgs e)
+        {
+            var mouse = pbx_star1.PointToClient(Cursor.Position);
+            singularCreator.changePriority((mouse.X > (pbx_star1.Width / 2)) ? 1 : 0);
+            setVisualPriority();
+        }
+
+        private void star1_move(object sender, MouseEventArgs e)
+        {
+            var mouse = pbx_star1.PointToClient(Cursor.Position);
+            setVisualPriority((mouse.X > (pbx_star1.Width / 2)) ? 1 : 0);
+        }
+
+        private void starbox_leave(object sender, EventArgs e)
+        {
+            setVisualPriority();
         }
     }
 }
