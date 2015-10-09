@@ -27,7 +27,8 @@ namespace JapaneseTrainer
             InitializeComponent();
             setupConfig();
             newSingular();
-            setVisualsLabels();            
+            setVisualsLabels();
+            pbx_play_pause.Image = (paused) ? JapaneseTrainer.Properties.Resources.pause : JapaneseTrainer.Properties.Resources.play;
         }
 
         private void FormSingular_Load(object sender, EventArgs e)
@@ -51,6 +52,7 @@ namespace JapaneseTrainer
             lbl_japanese.Text = currentSingular[1];            
             lbl_meaning.Text = currentSingular[2];
             lbl_furigana.Text = currentSingular[3];
+            
             if (currentSingular[4] != "")
                 lbl_extra.Text = "(" + currentSingular[4] + ")";
             else
@@ -150,7 +152,8 @@ namespace JapaneseTrainer
 
         private void configToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // create SINGLE controller for accessing different forms and handlers
+            FormConfig formConfig = new FormConfig(config);
+            formConfig.Show();
         }
 
         private void showFuriganaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,6 +190,7 @@ namespace JapaneseTrainer
             if (e.KeyCode == Keys.Space) // try to bind a key in config
             {             
                 paused = !paused;
+                pbx_play_pause.Image = (paused) ? JapaneseTrainer.Properties.Resources.pause : JapaneseTrainer.Properties.Resources.play;
             }
             else if ((e.KeyCode == Keys.N))
             {
@@ -252,7 +256,7 @@ namespace JapaneseTrainer
 
         private void FormSingular_FormClosed(object sender, FormClosedEventArgs e)
         {
-            updateBarTimer.Stop();
+            updateBarTimer.Stop(); // EXCEPTION after timer deselected!
         }
 
         private void nextToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -339,6 +343,12 @@ namespace JapaneseTrainer
         private void starbox_leave(object sender, EventArgs e)
         {
             setVisualPriority();
+        }
+
+        private void pbx_play_pause_Click(object sender, EventArgs e)
+        {
+            paused = !paused;
+            pbx_play_pause.Image = (paused) ? JapaneseTrainer.Properties.Resources.pause : JapaneseTrainer.Properties.Resources.play;
         }
     }
 }

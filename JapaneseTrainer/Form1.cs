@@ -82,18 +82,21 @@ namespace JapaneseTrainer
         private void verbsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSingular formSingle = new FormSingular('V', configHandler);
+            formSingle.Text = "Verb Trainer";
             formSingle.Show();
         }
 
         private void adjectivesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSingular formSingle = new FormSingular('A', configHandler);
+            formSingle.Text = "Adjective Trainer";
             formSingle.Show();
         }
 
         private void nounsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSingular formSingle = new FormSingular('N', configHandler);
+            formSingle.Text = "Noun Trainer";
             formSingle.Show();
         }
     }
