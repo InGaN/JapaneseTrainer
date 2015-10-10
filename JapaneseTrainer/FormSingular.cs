@@ -28,6 +28,7 @@ namespace JapaneseTrainer
             setupConfig();
             newSingular();
             setVisualsLabels();
+            config.timeEnable += instantiateBarTimer;
             pbx_play_pause.Image = (paused) ? JapaneseTrainer.Properties.Resources.pause : JapaneseTrainer.Properties.Resources.play;
         }
 
@@ -137,12 +138,25 @@ namespace JapaneseTrainer
             lbl_japanese.ForeColor = SystemColors.ControlText;
             lbl_meaning.ForeColor = SystemColors.ControlText;
             lbl_extra.ForeColor = SystemColors.ControlText;
-            updateBarTimer.Stop();
-            updateBarTimer = new System.Windows.Forms.Timer();
-            updateBarTimer.Tick += new EventHandler(updateBarTimerTick2);
-            bar_trainer_timer.Maximum = (int)(config.getTrainerTimerInterval2() * 1000);
+            instantiateBarTimer(null);
+        }
 
-            updateBarTimer.Start();
+        private void instantiateBarTimer(EventArgs e)
+        {
+            if (config.getTrainerTimerEnabled())
+            {
+                if(updateBarTimer != null)
+                    updateBarTimer.Stop();
+                updateBarTimer = new System.Windows.Forms.Timer();
+                updateBarTimer.Tick += new EventHandler(updateBarTimerTick2);
+                bar_trainer_timer.Maximum = (int)(config.getTrainerTimerInterval2() * 1000);
+
+                updateBarTimer.Start();
+            }
+            else
+            {
+                bar_trainer_timer.Value = 0;
+            }
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -218,7 +232,7 @@ namespace JapaneseTrainer
             int interval = 100;
             if ((bar_trainer_timer.Value + interval) < bar_trainer_timer.Maximum)
             {
-                if (!paused)
+                if (!paused && config.getTrainerTimerEnabled())
                     bar_trainer_timer.Value += interval;
             }
             else
@@ -233,7 +247,7 @@ namespace JapaneseTrainer
             int interval = 100;
             if ((bar_trainer_timer.Value + interval) < bar_trainer_timer.Maximum)
             {
-                if (!paused)
+                if (!paused && config.getTrainerTimerEnabled())
                     bar_trainer_timer.Value += interval;
             }                
             else
@@ -256,7 +270,8 @@ namespace JapaneseTrainer
 
         private void FormSingular_FormClosed(object sender, FormClosedEventArgs e)
         {
-            updateBarTimer.Stop(); // EXCEPTION after timer deselected!
+            if(config.getTrainerTimerEnabled())
+                updateBarTimer.Stop();
         }
 
         private void nextToolStripMenuItem1_Click(object sender, EventArgs e)

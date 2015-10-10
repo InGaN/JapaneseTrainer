@@ -25,6 +25,9 @@ namespace JapaneseTrainer
         const byte FLAG_SHOWID = 1;
         const byte FLAG_HIGHLIGHTVERBS = 2;
 
+        public delegate void TimerEnabler(EventArgs e);
+        public event TimerEnabler timeEnable;
+
         public ConfigHandler(Size formSize)
         {
             var perUserAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -65,6 +68,11 @@ namespace JapaneseTrainer
                 fontSize = 30;            
                 createConfig();
             }
+        }
+
+        public void publicEventCall() // damn dirty code here...
+        {
+            timeEnable(null);
         }
 
         public void createConfig()

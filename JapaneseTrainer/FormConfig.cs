@@ -48,6 +48,7 @@ namespace JapaneseTrainer
         {
             num_timer1.Enabled = num_timer2.Enabled = lbl_timer1.Enabled = lbl_timer2.Enabled = lbl_timer3.Enabled = lbl_timer4.Enabled = (((CheckBox)sender).Checked);
             configHandler.enableTrainerTimer(((CheckBox)sender).Checked);
+            configHandler.publicEventCall(); // damn dirty code here...       
         }
         private void num_timer_ValueChanged(object sender, EventArgs e)
         {
