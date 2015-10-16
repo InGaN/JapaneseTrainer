@@ -215,14 +215,18 @@ namespace JapaneseTrainer
                 }
                 else
                 {
-                    updateBarTimer.Stop();
-                    bar_trainer_timer.Value = 0;
-                    updateBarTimer = new System.Windows.Forms.Timer();
-                    updateBarTimer.Tick += new EventHandler(updateBarTimerTick);
-                    bar_trainer_timer.Maximum = (int)(config.getTrainerTimerInterval() * 1000);
+                    if (updateBarTimer != null)
+                    {
+                        updateBarTimer.Stop();
+                        bar_trainer_timer.Value = 0;
+                        updateBarTimer = new System.Windows.Forms.Timer();
+                        updateBarTimer.Tick += new EventHandler(updateBarTimerTick);
+                        bar_trainer_timer.Maximum = (int)(config.getTrainerTimerInterval() * 1000);
+                        updateBarTimer.Start();
+                    }
                     newSingular();
                     setVisualsLabels();
-                    updateBarTimer.Start();
+                   
                 }
             }            
         }

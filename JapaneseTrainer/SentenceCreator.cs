@@ -27,7 +27,7 @@ namespace JapaneseTrainer
             uri = audioURI;
 
             //SQLiteConnection.CreateFile("JapaneseDatabase.sqlite");
-            dbConnection = new SQLiteConnection("Data Source=dbKanji.sqlite;Version="+sqliteVersion+";");
+            dbConnection = new SQLiteConnection("Data Source=../../databases/dbKanji.sqlite;Version=" + sqliteVersion+";");
             dbConnection.Open();
 
             string sql = "SELECT COUNT(*) FROM SENTENCES";

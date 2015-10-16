@@ -54,7 +54,7 @@ namespace JapaneseTrainer
 
         private void setupDatabase()
         {
-            dbConnection = new SQLiteConnection("Data Source=" + databaseName + ".sqlite;Version=" + sqliteVersion + ";");
+            dbConnection = new SQLiteConnection("Data Source=../../databases/" + databaseName + ".sqlite;Version=" + sqliteVersion + ";");
             dbConnection.Open();
             string sql = "SELECT COUNT(*) FROM "+ tableName;
             SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
